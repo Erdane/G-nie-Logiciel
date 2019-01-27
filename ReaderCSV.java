@@ -15,35 +15,20 @@ public class ReaderCSV {
 	
 	public static int load(String filename,char sep) throws IOException {
 		int count = 0;
-		int i = 0;
 		String ligne = "";
-		boolean keeprunning = true;
-		
-		
 		try {
 				BufferedReader br = new BufferedReader(new FileReader(filename));
-				
-				//while(keeprunning) { 
 				for (char ch1 : ch) {
 					if(ligne != null) {
-					//if (ligne.endsWith("\n")){
-						//for (i=0; i<f.length(); i++) {
 							ligne =  br.readLine();
 							System.out.println(ligne);
 							al.add(ligne);
-						//al1.addAll(al);
 							count += 1;
 					}
-					//}
-			       
-					/*if (ligne == null) {
-						keeprunning = false;
-					}*/
-					i++;
 				}
-					} catch (FileNotFoundException e) {
+			} catch (FileNotFoundException e) {
 						e.printStackTrace();
-						}
+				}
 		
 		return count;
 	}

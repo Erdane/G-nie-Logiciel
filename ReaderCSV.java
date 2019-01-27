@@ -45,6 +45,7 @@ public class ReaderCSV {
 			fields = ligne.split(",");
 			for (int i = 0; i<fields.length; i++) {
 				if (fields[i] != null) {
+					System.out.println("Field " + (i+1) + " : " + fields[i]);
 					nbrField += 1;
 					}
 			}

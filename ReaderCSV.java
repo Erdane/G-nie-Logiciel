@@ -10,26 +10,31 @@ public class ReaderCSV {
 	static char sep;
 	static ArrayList<String> al = new ArrayList<String>();
 	static ArrayList<String> al1 = new ArrayList<String>();
+	static File f = new File("C:\\Users\\mahob\\eclipse-workspace\\TD Génie Logiciel\\world_cities(1).csv");
+	static char[] ch = new char[(int)f.length()];
 	
 	public static int load(String filename,char sep) throws IOException {
 		int count = 0;
 		int i = 0;
-		String ligne = null;
+		String ligne = "";
 		boolean keeprunning = true;
-		File f = new File("C:\\Users\\mahob\\eclipse-workspace\\TD Génie Logiciel\\world_cities(1).csv");
-		char[] ch = new char[(int)f.length()];
+		
 		
 		try {
 				BufferedReader br = new BufferedReader(new FileReader(filename));
-				ligne = br.readLine();
+				
 				//while(keeprunning) { 
 				for (char ch1 : ch) {
 					if(ligne != null) {
 					//if (ligne.endsWith("\n")){
-						al.add(ligne);
+						//for (i=0; i<f.length(); i++) {
+							ligne =  br.readLine();
+							System.out.println(ligne);
+							al.add(ligne);
 						//al1.addAll(al);
-						count += 1;
+							count += 1;
 					}
+					//}
 			       
 					/*if (ligne == null) {
 						keeprunning = false;
@@ -41,6 +46,28 @@ public class ReaderCSV {
 						}
 		
 		return count;
+	}
+	
+	
+	public static int fieldCount(String filename) throws IOException {
+		int nbrField = 0;
+		BufferedReader br;
+		String[] fields; //Tableau de string pour chaque champs
+		
+		try {
+			br = new BufferedReader(new FileReader(filename));
+			String ligne = br.readLine();
+			fields = ligne.split(",");
+			for (int i = 0; i<fields.length; i++) {
+				if (fields[i] != null) {
+					nbrField += 1;
+					}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return nbrField;
 	}
 	
 	
